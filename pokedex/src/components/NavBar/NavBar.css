@@ -1,0 +1,31 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263238;
+    padding: 20px;
+
+}
+.avatar{
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+}
+
+.pokeapi-img{
+    width: 105px;
+    height: 42px;
+}
+
+.container-info{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
