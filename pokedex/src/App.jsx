@@ -1,13 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import NavBar from './components/NavBar/NavBar'
+import Search from './components/Search/Search'
 
 function App() {
+  const[searchPokemon, setSearchPokemon] = useState("")
   return (
     <>
       <NavBar/>
+      <Search searchPokemon={searchPokemon} setSearchPokemon ={setSearchPokemon} />
+
     </>
   )
 }
