@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import './Search.css'
 import { searchPokemon } from '../../api/api'
-function Search({setSearchResult}) {
+function Search({setSearchResult, setLoading}) {
   const[searchPokemonInput, setsSearchPokemonInput] = useState("ditto")
 
   const buttonHandler = async () =>{
     if(searchPokemonInput){
       const pokemon = searchPokemonInput.toLowerCase()
+      setLoading(true)
       const result = await searchPokemon(pokemon)
+      setLoading(false)
       console.log(result)
       setSearchResult(result)
       return
