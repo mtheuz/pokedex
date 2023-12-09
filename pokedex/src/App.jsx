@@ -4,12 +4,11 @@ import NavBar from './components/NavBar/NavBar'
 import Search from './components/Search/Search'
 
 function App() {
-  const[searchPokemon, setSearchPokemon] = useState("")
+  const[searchResult, setSearchResult] = useState([])
   return (
     <>
       <NavBar/>
-      <Search searchPokemon={searchPokemon} setSearchPokemon ={setSearchPokemon} />
-
+      <Search  setSearchResult = {setSearchResult} />
     </>
   )
 }

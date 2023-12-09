@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
 import './Search.css'
-function Search({setSearchPokemon, searchPokemon}) {
+import { searchPokemon } from '../../api/api'
+function Search({setSearchResult}) {
+  const[searchPokemonInput, setsSearchPokemonInput] = useState("")
+
+  const buttonHandler = async () =>{
+    if(searchPokemonInput){
+      const pokemon = searchPokemonInput.toLowerCase()
+      const result = await searchPokemon(pokemon)
+      console.log(result)
+      setSearchResult(result)
+      return
+    }
+      
+    
+  }
   return (
     <div className='wrapper'>
 
         <input 
         className='search-bar'
-        value={searchPokemon} 
+        value={searchPokemonInput} 
         placeholder='Digite o nome do pokemon' 
         type="text" 
-        onChange={(e) => setSearchPokemon(e.target.value)}/>
+        onChange={(e) => setsSearchPokemonInput(e.target.value)}/>
 
-        <button className='search-button' type="button">Pesquisar</button>
+        <button className='search-button' type="button" onClick={buttonHandler}>Pesquisar</button>
     </div>
   )
 }
