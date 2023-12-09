@@ -6,5 +6,8 @@ export  const searchPokemon = async (pokemon) => {
 
     } catch (error) {
         console.log('erro message:', error)
+        if(error.message.includes('Not Found')){
+            return false
+        }
     }
 }

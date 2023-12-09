@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Search.css'
 import { searchPokemon } from '../../api/api'
 function Search({setSearchResult}) {
-  const[searchPokemonInput, setsSearchPokemonInput] = useState("")
+  const[searchPokemonInput, setsSearchPokemonInput] = useState("ditto")
 
   const buttonHandler = async () =>{
     if(searchPokemonInput){
