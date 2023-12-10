@@ -1,9 +1,14 @@
-import React from 'react'
-
-function Pokedex() {
+import React from 'react';
+import Pokemon from '../Pokemon/Pokemon';
+import './Pokedex.css'
+function Pokedex({ pokemons }) {
   return (
-    <div>Pokedex</div>
-  )
+    <div className='wrapper-pokedex'>
+      {pokemons.map((pokemon) => (
+        <Pokemon pokemon={pokemon}/>
+      ))}
+    </div>
+  );
 }
 
-export default Pokedex
+export default Pokedex;

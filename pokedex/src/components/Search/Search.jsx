@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Search.css'
 import { searchPokemon } from '../../api/api'
 function Search({setSearchResult, setLoading}) {
-  const[searchPokemonInput, setsSearchPokemonInput] = useState("ditto")
+  const[searchPokemonInput, setsSearchPokemonInput] = useState("")
 
   const buttonHandler = async () =>{
     if(searchPokemonInput){
@@ -26,7 +26,6 @@ function Search({setSearchResult, setLoading}) {
         placeholder='Digite o nome do pokemon' 
         type="text" 
         onChange={(e) => setsSearchPokemonInput(e.target.value)}/>
-
         <button className='search-button' type="button" onClick={buttonHandler}>Pesquisar</button>
     </div>
   )
