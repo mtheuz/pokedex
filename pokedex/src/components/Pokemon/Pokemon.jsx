@@ -1,6 +1,6 @@
-import React from 'react'
-import'./Pokemon.css'
-function Pokemon({pokemon}) {
+import React from "react";
+import "./Pokemon.css";
+function Pokemon({ pokemon }) {
   const typePokemon = {
     normal: "#a8a878",
     fire: "#f05030",
@@ -19,26 +19,33 @@ function Pokemon({pokemon}) {
     dragon: "#7038f8",
     dark: "#705848",
     steel: "#b8b8d0",
-    fairy: "#a8b820"
+    fairy: "#a8b820",
   };
-  const capitalize = (str)=> {
+  const capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-  const name = capitalize(pokemon.name)
-  
+  };
+  const name = capitalize(pokemon.name);
+
   return (
-    <div className='card-pokemon'>
-      <h1 className='name-pokemon'>{name}</h1>
-        <img className='sprite-pokemon' src={pokemon.sprites.front_default} alt={pokemon.name} />
-        <div className='types'>
-            {pokemon.types.map((tipo) => (
-              <div className='types-name' style={{backgroundColor: typePokemon[tipo.type.name]}}>
-                {capitalize(tipo.type.name)}
-              </div>
-            ))}
+    <div className="card-pokemon">
+      <h1 className="name-pokemon">{name}</h1>
+      <img
+        className="sprite-pokemon"
+        src={pokemon.sprites.front_default}
+        alt={pokemon.name}
+      />
+      <div className="types">
+        {pokemon.types.map((tipo) => (
+          <div
+            className="types-name"
+            style={{ backgroundColor: typePokemon[tipo.type.name] }}
+          >
+            {capitalize(tipo.type.name)}
           </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Pokemon
+export default Pokemon;

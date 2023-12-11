@@ -7,4 +7,21 @@
 }
 body{
   background-color: #fff;
+
+}
+.navegacao{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.botaoNavegacao{
+  background-color: #263238;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+}
+.botaoNavegacao:hover{
+  cursor: pointer;
 }
