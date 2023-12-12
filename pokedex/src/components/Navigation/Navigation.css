@@ -1,0 +1,18 @@
+.navegacao{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    align-items: center;
+    font-weight: 800;
+  }
+  .botaoNavegacao{
+    background-color: #263238;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+  }
+  .botaoNavegacao:hover{
+    cursor: pointer;
+  }

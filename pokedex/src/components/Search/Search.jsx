@@ -3,7 +3,7 @@ import "./Search.css";
 import { searchPokemon } from "../../api/api";
 function Search({ setSearchResult, setLoading, setActivateSearch}) {
   const [searchPokemonInput, setsSearchPokemonInput] = useState("");
-
+  
   const buttonHandler = async () => {
     if (searchPokemonInput) {
       const pokemon = searchPokemonInput.toLowerCase();

@@ -13,11 +13,35 @@ function App() {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activateSearch, setActivateSearch] = useState(false);
+  const [page, setpage] = useState(0);
+  const [numberOfPages, setNumberOfPages] = useState(30);
+  const[offset,setOffset] = useState(0)
+  const itemPage = 48;
+
+  const onNextClick = () => {
+    setpage(page + 1);
+    setOffset(offset + 48)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adiciona um efeito de rolagem suave
+    });
+  };
+
+  const onPreviousClick = () => {
+
+    setpage(page -1)
+    if(offset != 0)
+      setOffset(offset - 48)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adiciona um efeito de rolagem suave
+    });
+  };
 
   const fetchPokemons = async () => {
     try {
       setLoading(true);
-      const resultAllPokemons = await getAllPokemons();
+      const resultAllPokemons = await getAllPokemons(48, offset);
       const pokemonData = resultAllPokemons.results.map(async (pokemon) => {
         return await getPokemon(pokemon.url);
       });
@@ -25,6 +49,7 @@ function App() {
       const resultPromisses = await Promise.all(pokemonData);
       setAllPokemons(resultPromisses);
       setLoading(false);
+      setNumberOfPages(Math.ceil(resultAllPokemons.count / itemPage));
     } catch (error) {
       console.log(error.message);
     }
@@ -32,7 +57,7 @@ function App() {
 
   useEffect(() => {
     fetchPokemons();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -44,10 +69,17 @@ function App() {
       />
       <NotFound searchResult={searchResult} loading={loading} />
       {loading ? <Loading /> : false}
-      {(!activateSearch  && !loading)? <Pokedex pokemons={allPokemons} /> : false}
-      {(!loading && searchResult)? <Navigation/> : false}
-      
-      
+      {!activateSearch && !loading ? <Pokedex pokemons={allPokemons} /> : false}
+      {!loading && searchResult ? (
+        <Navigation
+          page={page}
+          numberOfPages={numberOfPages}
+          onNextClick={onNextClick}
+          onPreviousClick={onPreviousClick}
+        />
+      ) : (
+        false
+      )}
     </>
   );
 }

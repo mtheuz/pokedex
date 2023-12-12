@@ -1,13 +1,20 @@
 import React from "react";
-
-function Navigation() {
+import "./Navigation.css";
+function Navigation({ page, numberOfPages, onPreviousClick, onNextClick }) {
   return (
     <div className="navegacao">
-      <button type="button" className="botaoNavegacao">
-        Anterior
+      <button
+        type="button"
+        className="botaoNavegacao"
+        onClick={onPreviousClick}
+      >
+        ⬅️
       </button>
-      <button type="button" className="botaoNavegacao">
-        Proximo
+      <div>
+        {page} de {numberOfPages}
+      </div>
+      <button type="button" className="botaoNavegacao" onClick={onNextClick}>
+        ➡️
       </button>
     </div>
   );
